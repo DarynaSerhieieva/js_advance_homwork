@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="utf-8" />
+   <title>JS-ADV. Lesson 1. Task 3 </title>
+</head>
+<body>
+  <div class="wrap" id="app"></div>
+
+  <script>
+
+  /*
+     Задание:
+      Сложить в элементе с id App следующую размету HTML:
+
+      <header>
+        <a href="http://google.com.ua">
+          <img src="https://www.google.com.ua/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">
+        </a>
+        <div class="menu">
+          <a href="#1"> link 1</a>
+          <a href="#1"> link 2</a>
+          <a href="#1"> link 3</a>
+        </div>
+      </header>
+
+      Используя следующие методы для работы:
+      getElementById
+      createElement
+      element.innerText
+      element.className
+      element.setAttribute
+      element.appendChild
+  */
+
+
+
+      const header = document.createElement('header')
+      const google = document.createElement('a')
+        google.href = 'http://google.com.ua'
+      const img = document.createElement('img')
+        img.src = 'https://www.google.com.ua/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'
+      const div = document.createElement('div')
+        div.className = 'menu'
+
+      const links = [
+        { href: '#1', html: 'link 1' },
+        { href: '#1', html: 'link 2' },
+        { href: '#1', html: 'link 3' },
+      ]
+
+      for (let l of links) {
+        let link = document.createElement('a')
+        link.href = l.href
+        link.innerText = l.html
+        div.appendChild(link)
+      }
+
+
+        header.appendChild(google)
+        google.appendChild(img)
+        header.appendChild(div)
+        
+      document.querySelector('#app').appendChild(header)
+
+
+
+
+
+
+
+
+  // var header = document.createElement('header');
+  // var a = document.createElement('a');
+  //     a.href = "http://google.com.ua";
+
+  // var img = document.createElement('img');
+  //     img.src = "https://www.google.com.ua/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png";
+
+  // var div = document.createElement('div');
+  //     div.className = 'menu';
+  
+  // var a1 = document.createElement('a');
+  //     a1.href = "#1";
+  //     a1.innerText = ' link 1';
+  
+  // var a2 = document.createElement('a');
+  //     a2.href = "#1";
+  //     a2.innerText = ' link 2';
+
+  // var a3 = document.createElement('a');
+  //     a3.href = "#1";
+  //     a3.innerText = ' link 3';
+
+  // a.appendChild(img);
+
+  // div.appendChild(a1);
+  // div.appendChild(a2);
+  // div.appendChild(a3);
+
+  // header.appendChild(a);
+  // header.appendChild(div);
+
+  // var app = document.querySelector('#app');
+  // // app.appendChild(header);
+
+  // app.innerHTML = '<header><a href="http://google.com.ua"><img src="https://www.google.com.ua/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"></a><div class="menu"><a href="#1"> link 1</a><a href="#1"> link 2</a><a href="#1"> link 3</a></div></header>';
+
+
+  </script>
+</body>
+</html>
