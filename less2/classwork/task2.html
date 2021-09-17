@@ -19,13 +19,19 @@
     </div>
 
     <div class="testBlock click">
-      <button class="iButton" id="mouseClick">2. Click for do things</button>
+      <button class="iButton" id="mouseClick" onclick="removeClass()">2. Click for do things</button>
       <div id="clickResult" class="resultBlock one two three four five six"></div>
     </div>
 
     <div class="testBlock random">
-      <button class="iButton" id="mouseLight">3. Click for turn on lights</button>
-      <div id="lightResult" class="resultBlock"></div>
+      <button class="iButton" id="mouseLight" onclick="newColor()">3. Click for turn on lights</button>
+      <div id="lightResult" class="resultBlock">
+        <div class="lights">
+          <div class="grey"></div>
+          <div class="grey"></div>
+          <div class="grey"></div>
+        </div>
+      </div>
     </div>
 
     <div class="testBlock keyboard">
@@ -79,32 +85,64 @@
 
 
     */
+    //1
 
-    var mouseHover = document.getElementById('mouseHover');
-    var mouseClick = document.getElementById('mouseClick');
-    var mouseLight = document.getElementById('mouseLight');
-    var keyboardButton = document.getElementById('keyboardButton');
+    let colors = ['red','blue', 'green', 'orange', 'purple'];
+    let randomColors = () => colors[Math.floor(Math.random() * colors.length)];
 
-    mouseHover.onmouseenter = function(){
-      console.log('hover');
+    document.querySelector('#mouseHover').onmouseenter = () => {
+      const list = document.createElement('li');
+      list.innerText = 'Hovered!';
+      list.classList.add(`${randomColors()}`);
+      document.querySelector('#hoverResult').appendChild(list);
     }
 
-    var clickIndex = 0;
-    var direction = true;
+    //3
 
-    mouseClick.onclick = function(){
-        console.log('click');
+    let lights = document.querySelectorAll('.grey');
+    const colorLights = ['red', 'yellow', 'green'];
+    let counter = 0;
+
+    let newColor = () => {
+      for (let color of lights) {
+        color.className = "grey";
+      }
+      if (counter < colorLights.length) {
+        lights[counter].classList.add(`${colorLights[counter]}`);
+        counter++;
+      }
+      else {
+        counter = 0;
+      }
     }
 
+    
 
-    mouseLight.onclick = function(e){
-        console.log('light');
-    }
+    // var mouseHover = document.getElementById('mouseHover');
+    // var mouseClick = document.getElementById('mouseClick');
+    // var mouseLight = document.getElementById('mouseLight');
+    // var keyboardButton = document.getElementById('keyboardButton');
 
-    var counter = 0;
-    keyboardButton.onkeydown = function(){
-        console.log('keydown');
-    }
+    // mouseHover.onmouseenter = function(){
+    //   console.log('hover');
+    // }
+
+    // var clickIndex = 0;
+    // var direction = true;
+
+    // mouseClick.onclick = function(){
+    //     console.log('click');
+    // }
+
+
+    // mouseLight.onclick = function(e){
+    //     console.log('light');
+    // }
+
+    // var counter = 0;
+    // keyboardButton.onkeydown = function(){
+    //     console.log('keydown');
+    // }
   </script>
 </body>
 </html>

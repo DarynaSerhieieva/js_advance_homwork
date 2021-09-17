@@ -17,6 +17,27 @@
       5. Удалить класс "Delete"
       6. Применить метод toggle на класс "Command"
     */
+
+    //1
+    let target = document.querySelector('#target')
+    console.log(target)
+
+    //2
+    let div = document.createElement('div')
+
+    //3
+    div.className = 'Ctrl Shift Delete'
+
+    //4
+    div.classList.add('test')
+
+    //5
+    div.classList.remove('Delete')
+
+    //6
+    div.classList.toggle('Command')
+    console.log(div)
+
   </script>
 </body>
 </html>
