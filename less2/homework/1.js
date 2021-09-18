@@ -38,3 +38,18 @@
       }
 
   */
+
+const buttonAll = document.querySelectorAll('.showButton');
+const tabAll = document.querySelectorAll('.tab');
+
+for (let button of buttonAll) {
+  button.onclick = () => {
+    let buttonDataset = button.dataset.tab;
+    for (let tab of tabAll){
+      let tabDataset = tab.dataset.tab;
+      if (buttonDataset === tabDataset) {
+        tab.classList.add('active');
+      }
+    }
+  }
+}

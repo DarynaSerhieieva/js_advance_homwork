@@ -19,7 +19,7 @@
     </div>
 
     <div class="testBlock click">
-      <button class="iButton" id="mouseClick" onclick="removeClass()">2. Click for do things</button>
+      <button class="iButton" id="mouseClick" onclick="changeClass()">2. Click for do things</button>
       <div id="clickResult" class="resultBlock one two three four five six"></div>
     </div>
 
@@ -86,7 +86,6 @@
 
     */
     //1
-
     let colors = ['red','blue', 'green', 'orange', 'purple'];
     let randomColors = () => colors[Math.floor(Math.random() * colors.length)];
 
@@ -97,24 +96,59 @@
       document.querySelector('#hoverResult').appendChild(list);
     }
 
-    //3
+    //2
+    const classListRemove = ['six', 'two', 'three', 'four', 'one', 'five'];
+    const classListAdd = ['one', 'two', 'three', 'four', 'five', 'six'];
+    const divChangeClass = document.querySelector('#clickResult');
+    let counterClassRemove = 0;
+    let counterClassAdd = 0;
 
+    let changeClass = () => {
+      if (counterClassRemove < classListRemove.length) {
+        divChangeClass.classList.remove(`${classListRemove[counterClassRemove]}`);
+        counterClassRemove++;
+      } else if (counterClassAdd < classListRemove.length){
+        divChangeClass.classList.add(`${classListAdd[counterClassAdd]}`);
+        counterClassAdd++;
+      } else {
+        counterClassRemove = 0;
+        counterClassAdd = 0;
+      }
+    }
+
+    //3
     let lights = document.querySelectorAll('.grey');
     const colorLights = ['red', 'yellow', 'green'];
-    let counter = 0;
+    let counterColor = 0;
 
     let newColor = () => {
       for (let color of lights) {
         color.className = "grey";
       }
-      if (counter < colorLights.length) {
-        lights[counter].classList.add(`${colorLights[counter]}`);
-        counter++;
-      }
-      else {
-        counter = 0;
+      if (counterColor < colorLights.length) {
+        lights[counterColor].classList.add(`${colorLights[counterColor]}`);
+        counterColor++;
+      } else {
+        counterColor = 0;
       }
     }
+
+    //4
+    const buttonKeyboard = document.querySelector('#keyboardButton');
+    const divKeyboard = document.querySelector('#keyboardResult');
+    const numbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+    let counterKeyboard = 0;
+
+    buttonKeyboard.onkeydown = () => {
+      divKeyboard.className = 'resultBlock key-colors';
+      counterKeyboard++;
+      divKeyboard.innerText = counterKeyboard;
+      let counterString = String(counterKeyboard).split('');
+      for (let num of counterString) {
+        divKeyboard.classList.add(`${numbers[num]}`);
+      }
+    }
+
 
     
 
