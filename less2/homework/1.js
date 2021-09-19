@@ -42,14 +42,17 @@
 const buttonAll = document.querySelectorAll('.showButton');
 const tabAll = document.querySelectorAll('.tab');
 
-for (let button of buttonAll) {
+const hideAllTabs = () => {
+  tabAll.forEach(tab => tab.classList.remove('active'));
+}
+
+buttonAll.forEach(button => {
   button.onclick = () => {
-    let buttonDataset = button.dataset.tab;
-    for (let tab of tabAll){
-      let tabDataset = tab.dataset.tab;
-      if (buttonDataset === tabDataset) {
+    hideAllTabs();
+    tabAll.forEach(tab => {
+      if (button.dataset.tab === tab.dataset.tab) {
         tab.classList.add('active');
       }
-    }
+    })
   }
-}
+})

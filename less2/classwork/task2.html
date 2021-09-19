@@ -140,14 +140,13 @@
     let counterKeyboard = 0;
 
     buttonKeyboard.onkeydown = () => {
-      divKeyboard.className = 'resultBlock key-colors';
+      divKeyboard.className = 'resultBlock key-colors ';
       counterKeyboard++;
       divKeyboard.innerText = counterKeyboard;
-      let counterString = String(counterKeyboard).split('');
-      for (let num of counterString) {
-        divKeyboard.classList.add(`${numbers[num]}`);
-      }
+      let counterString = String(counterKeyboard).split('').map(num => numbers[num]);
+      divKeyboard.className = ` resultBlock key-colors ${counterString.join(' ')}`;
     }
+
 
 
     
