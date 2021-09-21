@@ -52,25 +52,22 @@
 
       */
 
-      var ListCount = 0;
+      let listCount = 0;
       const inputText = document.querySelector('#Receiver');
-      const buttonAdd = document.querySelector('#AddToList')
+      const buttonAdd = document.querySelector('#AddToList');
       
       const addText = () => {
-        if (ListCount === 4 ) {
-          document.querySelector('#error').innerText = 'Stop! You can`t add more 5 elements'
-          buttonAdd.setAttribute('disabled', true)
+        if (listCount === 4 ) {
+          document.querySelector('#error').innerText = 'Stop! You can`t add more 5 elements';
+          buttonAdd.setAttribute('disabled', true);
         }
-        ListCount++
+        listCount++;
         let liAdd = document.createElement('li');
         liAdd.innerText = inputText.value;
         document.querySelector('#list').appendChild(liAdd);
-        inputText.value = ''
+        inputText.value = '';
       }
       buttonAdd.addEventListener('click', addText);
-
     </script>
   </body>
-
-
 </html>
