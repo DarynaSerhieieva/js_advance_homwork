@@ -18,5 +18,40 @@
 
 */
 
-  var OurSliderImages = ['images/cat1.jpg', 'images/cat2.jpg', 'images/cat3.jpg', 'images/cat4.jpg', 'images/cat5.jpg', 'images/cat6.jpg', 'images/cat7.jpg', 'images/cat8.jpg'];
-  var currentPosition = 0;
+  const OurSliderImages = ['images/cat1.jpg', 'images/cat2.jpg', 'images/cat3.jpg', 'images/cat4.jpg', 'images/cat5.jpg', 'images/cat6.jpg', 'images/cat7.jpg', 'images/cat8.jpg'];
+  const allButton = document.querySelectorAll('button');
+  const sliderImg = document.createElement('img');
+  let counter = 0;
+
+  const loadSlider = () => {
+    sliderImg.src = `${OurSliderImages[counter]}`;
+    document.querySelector('#slider').appendChild(sliderImg);
+  }
+  window.addEventListener('load', loadSlider);
+
+  allButton.forEach(button => {
+    button.classList.add('buttonAnimated');
+    button.addEventListener('click', event => {
+      sliderImg.src = '';
+      sliderImg.className = '';
+      if (event.target.innerText === 'Prev') {
+        counter--;
+        if (counter < 0){
+          counter = OurSliderImages.length -1;
+        }
+      } else {
+        counter++;
+        if (counter > OurSliderImages.length -1){
+          counter = 0;
+        }
+      }
+      sliderImg.classList.add('slider');
+      sliderImg.src = `${OurSliderImages[counter]}`;
+      
+    })
+  })
+
+
+
+
+
