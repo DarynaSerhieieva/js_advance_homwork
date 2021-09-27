@@ -65,39 +65,7 @@
     }
   </style>
   <script>
-    const ulItem = document.getElementById('toDoList');
-    const addNew = document.getElementById('AddToDo');
-    const textToDo = document.getElementById('newToDo');
-    const list = [];
-
-    const AddList = value => {
-      const newList = document.createElement('li');
-      const newInput = document.createElement('input');
-      const newSpan = document.createElement('span');
-      const newButton = document.createElement('button');
-      
-      newList.className = 'listItem';
-      newInput.className = 'DoneCheckbox';
-      newSpan.className = 'TodoText';
-      newInput.type = 'checkbox';
-      newButton.innerText = 'Remove';
-      newSpan.innerText = value;
-      ulItem.appendChild(newList);
-      newList.appendChild(newInput);
-      newList.appendChild(newSpan);
-      newList.appendChild(newButton);
-    }
-
-    const addToDo = () => {
-      ulItem.innerHTML = '';
-      if (textToDo.value !== '' && !list.includes(textToDo.value)) {
-        list.push(textToDo.value);
-      }
-      list.forEach(value => AddList(value));
-      textToDo.value = '';
-    }
-    
-    addNew.addEventListener('click', addToDo)
+   
   </script>
 </body>
 </html>
