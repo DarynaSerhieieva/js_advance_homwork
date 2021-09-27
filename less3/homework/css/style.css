@@ -11,12 +11,19 @@ body{
   padding: 10px 20px 30px;
 }
 .buttonAnimated{
-    width: 100px;
-    height: 30px;
-    background: white;
-    transition: 1s;
-    outline: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 12px;
+  width: 100px;
+  height: 30px;
+  background: orange;
+  
 }
+.buttonAnimated:hover {
+  transition: 0.4s;
+  background: orangered;
+}
+
 .buttonAnimated.animation{
   width: 350px;
   height: 50px;
@@ -53,4 +60,18 @@ body{
 .loadedImage{
   transform: rotate(390deg);
   transition: 0.5s;
+}
+.slider {
+  transform-origin: 0% 100%;
+  animation-name: slider;
+  animation-duration: 2s;
+}
+
+@keyframes slider {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
