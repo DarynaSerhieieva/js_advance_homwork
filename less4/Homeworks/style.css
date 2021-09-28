@@ -1,0 +1,57 @@
+body {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    max-width: 1400px;
+}
+.input-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.input-list input {
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 2px solid grey;
+}
+.input-list input:hover {
+   border-color: rgb(82, 81, 81);
+   background: rgb(235, 230, 230);
+}
+.input-list input:focus {
+    outline: none;
+    border-color: rgb(82, 81, 81);
+}
+/* .input-list input:valid{
+    border-color: rgb(75, 109, 75);
+} */
+/* .input-list input:invalid{
+    border-color: rgb(83, 36, 36);
+} */
+
+
+.input-list input:not(:last-child) {
+    margin-bottom: 25px;
+}
+.checkbox {
+    display: flex;
+    justify-content: space-between;
+}
+.button-list {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+.send,
+.verify{
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 2px solid orange;
+    background: transparent;
+}
+.send:hover,
+.verify:hover {
+    border-color: orangered;
+}

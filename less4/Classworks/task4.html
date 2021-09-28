@@ -54,6 +54,7 @@
     const weatherWinter = ['Солнечно', 'Легкий снегопад', 'Сильный снегопад'];
     const weatherAutumn = ['Солнечно', 'Дождь', 'Ветер', 'Сильный дождь'];
     const weatherSummer = ['Солнечно', 'Засуха', 'Ветер'];
+    let weather = '';
     const countriesCity = {
       Ukraine: {
         city: ['Kyiv', 'Lviv', 'Odesa', 'Charkiv']
@@ -76,6 +77,7 @@
         selects.appendChild(options);
       })
       const addSelect= (event) => {
+        result.innerText = '';
         const removeSelest = document.querySelector('.city');
         if (removeSelest) {
           removeSelest.remove();
@@ -90,7 +92,15 @@
           newSelect.appendChild(cityOptions);
         })
         const myChoiseCity = (event) => {
-          result.innerText = `${myChoise}. В ${event.target.value} ${} -10 градусов`
+          const randomTem = random(-10, 40);
+          if (randomTem < 0) {
+            weather =  weatherWinter[random(0, weatherWinter.length -1)];
+          } else if (randomTem < 30) {
+            weather = weatherAutumn[random(0, weatherAutumn.length -1)];
+          } else {
+            weather = weatherSummer[random(0, weatherSummer.length -1)];
+          }
+          result.innerText = `${myChoise}. В ${event.target.value} ${weather} ${randomTem} градусов`
         }
         newSelect.addEventListener('change', myChoiseCity)
       }
