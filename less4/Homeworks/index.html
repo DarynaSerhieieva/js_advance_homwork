@@ -8,21 +8,24 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <form class="input-list" action="#">
-            <input type="text">
-            <input type="email">
-            <input type="password">
-            <input type="number">
-            <input type="text">
+        <form id="myForm" class="input-list" action="#">
+            <input type="text" required minlength="2" name="name" placeholder="Ваше имя">
+            <input type="email" required minlength="3" name="email" placeholder="Ваше email">
+            <input type="password" required minlength="8" maxlength="16" name="password" placeholder="Ваш пароль">
+            <input type="number" required minlength="1" name="apple" placeholder="Количество сьеденых яблок">
+            <input type="text" required name="thanks" pattern="спасибо" placeholder="Напиши спасибо за яблоки">
             <label class="checkbox">
-                <input type="checkbox">
+                <input type="checkbox" required name="agree">
                 <span>Согласен на обучение?</span>
             </label>
             <div class="button-list">
-                <button type="button" class="send">Отправить</button>
-                <button type="submit" class="verify">Проверить</button>
+                <button type="submit" class="send" disabled>Отправить</button>
+                <button type="button" class="verify">Проверить</button>
             </div>
         </form>
+        <div class="background">
+            <div class="pop-up"></div>
+        </div>
         <script src="script.js"></script>
     </body>
 </html>

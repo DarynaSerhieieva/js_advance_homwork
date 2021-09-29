@@ -1,5 +1,5 @@
 body {
-    margin-top: 100px;
+    margin: auto;
     display: flex;
     justify-content: center;
     max-width: 1400px;
@@ -9,32 +9,43 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 100px;
 }
-.input-list input {
+.input-list > input {
     padding: 8px 10px;
     border-radius: 10px;
     border: 2px solid grey;
 }
-.input-list input:hover {
+.input-list > input:hover {
    border-color: rgb(82, 81, 81);
    background: rgb(235, 230, 230);
 }
-.input-list input:focus {
+.input-list > input:focus {
     outline: none;
     border-color: rgb(82, 81, 81);
 }
-/* .input-list input:valid{
+.input-list.submitted > input:valid{
     border-color: rgb(75, 109, 75);
-} */
-/* .input-list input:invalid{
-    border-color: rgb(83, 36, 36);
-} */
-
-
-.input-list input:not(:last-child) {
+}
+.input-list.submitted > input:invalid{
+    border-color: rgb(165 56 56);
+}
+.input-list > input:not(:last-child) {
     margin-bottom: 25px;
 }
+.input-list > input::-webkit-outer-spin-button,
+.input-list > input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.input-list > input,
+.input-list > input:hover,
+.input-list > input:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+}
 .checkbox {
+    margin-bottom: 25px;
     display: flex;
     justify-content: space-between;
 }
@@ -45,8 +56,8 @@ body {
 }
 .send,
 .verify{
-    padding: 8px;
     cursor: pointer;
+    padding: 8px;
     border-radius: 10px;
     border: 2px solid orange;
     background: transparent;
@@ -54,4 +65,36 @@ body {
 .send:hover,
 .verify:hover {
     border-color: orangered;
+}
+.send:disabled {
+    border-color: rgba(255, 165, 0, 0.5);
+    cursor: not-allowed;
+}
+.background {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: rgba(87, 85, 85, 0.3);
+    position: absolute;
+}
+.pop-up {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 0 16px #8c8b8b;
+    width: 300px;
+    height: 100px;
+    transform: translate(-50%, -50%);
+}
+.pop-up::after {
+    cursor: pointer;
+    content: "";
+    background: url("img/close.svg");
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
