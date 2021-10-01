@@ -22,3 +22,18 @@
       /* ... делать что-то с obj[key] ...
     // }
 */
+
+function Dog(name, breed, status) {
+  this.name = name;
+  this.breed = breed;
+  this.status = status;
+  this.dogSleep = () => `${this.name} sleep`;
+  this.dogInformation = () => Object.keys(this).forEach(keys => console.log(this[keys]));
+}
+
+let dog1 = new Dog('Bobik', 'cur', 'homeless');
+
+console.log(dog1);
+console.log(dog1.dogSleep());
+console.log(dog1.dogInformation());
+
