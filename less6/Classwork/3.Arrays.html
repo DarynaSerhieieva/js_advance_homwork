@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork</title>
+
+    <script>
+
+    /*
+      Задание:
+      1. При помощи методов изложеных ниже, переформатировать ITEA_COURSES в массив который содержит длину строк каждого из элементов.
+      2. Отфильтровать массив ITEA_COURSES по алфавиту.
+          + Бонусный бал. Вывести на страничку списком
+      3. Реализация функции поиска по массиву ITEA_COURSES.
+          + Бонусный бал. Вывести на страничку инпут и кнопку по которой будет срабатывать поиск.
+    */
+
+    // const ITEA_COURSES = ["Курс HTML & CSS", "JavaScript базовый курс", "JavaScript продвинутый курс", "JavaScript Professional", "Angular 2.4 (базовый)", "Angular 2.4 (продвинутый)", "React.js", "React Native", "Node.js", "Vue.js"];
+
+    /*
+      Задание 2:
+      Написать фильтр массива по:
+      Актеру, продолжительности
+
+      Бонус:
+        Сделать графическую оболочку для программы:
+        - Селект со списком актеров
+        - Селект или инпут с продолжительностью
+        - Результат в виде списка фильмов
+    */
+
+      var stars = ['Elijah Wood', 'Ian McKellen', 'Orlando Bloom','Ewan McGregor',' Liam Neeson', 'Natalie Portman', 'Ewan McGregor', 'Billy Bob Thornton', 'Martin Freeman']
+      var movies = [
+            {
+              name: "Lord of the Rigs",
+              duration: 240,
+              starring: [ 'Elijah Wood', 'Ian McKellen', 'Orlando Bloom']
+            },
+            {
+              name: "Star Wars: Episode I - The Phantom Menace",
+              duration: 136,
+              starring: [ 'Ewan McGregor',' Liam Neeson', 'Natalie Portman']
+            },
+            {
+              name: "Fargo",
+              duration: 100,
+              starring: [ 'Ewan McGregor', 'Billy Bob Thornton', 'Martin Freeman']
+            },
+            {
+            name: "V for Vendetta",
+            duration: 150,
+            starring: [ 'Hugo Weaving', 'Natalie Portman', 'Rupert Graves']
+          }
+        ];
+
+          // const startBtn = document.getElementById('startBtn');
+          // const time = document.getElementById('time');
+          // let counter = 0;
+
+          //  function MyTimer() {
+          //   setInterval( function (i) {
+          //     counter++;
+          //     time.innerText = counter;
+          //     console.log(counter);
+          //   }, 1000)
+          //  }
+          //  startBtn.addEventListener('click', MyTimer);
+
+    </script>
+</head>
+<body>
+  <div>
+    <h2>Search</h2>
+    <input id="input" type="text">
+    <button id="search" type="button">Search</button>
+    <p id="resultSearch"></p>
+  </div>
+  <script>
+  //  // task 1
+  //   const ITEA_COURSES = ["Курс HTML & CSS", "JavaScript базовый курс", "JavaScript продвинутый курс", "JavaScript Professional", "Angular 2.4 (базовый)", "Angular 2.4 (продвинутый)", "React.js", "React Native", "Node.js", "Vue.js"];
+  //   const input = document.getElementById('input');
+  //   const search = document.getElementById('search');
+  //   // let lengthArrey = [];
+
+  //   // ITEA_COURSES.forEach(item => lengthArrey.push(item.length));
+  //   // console.log(lengthArrey);
+
+  //   // ITEA_COURSES.sort();
+  //   // console.log(ITEA_COURSES);
+    
+  //   const searchItem = () => {
+  //     const course = ITEA_COURSES.find(item => item === input.value);
+  //     document.getElementById('resultSearch').innerText = course ? input.value : 'Sorry, not found!';
+  //   }
+      
+  //   search.addEventListener('click', searchItem);
+
+  //task2 
+  
+
+  </script>
+</body>
+</html>
+
