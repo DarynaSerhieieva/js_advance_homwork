@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+}
+.list {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.comment-list {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 550px;
+}
+.comment {
+    width: 40%;
+}
+.buttons {
+    align-self: flex-start;
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.next-comment {
+    cursor: pointer;
+    border: none;
+    padding: 8px 10px;
+    background: rgb(95 145 255);
+    color: white;
+    border-radius: 10px;
+}
+.like-btn {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.textComment {
+    display: flex;
+}
+.textComment p {
+    padding-right: 10px;
+}
