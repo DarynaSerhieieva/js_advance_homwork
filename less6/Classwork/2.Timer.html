@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .box {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 1500px;
+      }
+      .circle {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        border: 4px solid black;
+      }
+      .line {
+        position: absolute;
+        width: 4px;
+        height: 140px;
+        background: black;
+        top: 5px;
+        right: 50%;
+        transform-origin: bottom center;
+      }
+      .list-button {
+        margin-top: 25px;
+      }
+      .list-button button {
+        cursor: pointer;
+        padding: 8px 10px;
+        border-radius: 10px;
+        border: transparent;
+        background: orange;
+      }
+      .list-button button:not(:last-child) {
+        margin-right: 20px;
+      }
+      .list-button button:hover:not(:disabled) {
+        box-shadow: 0 0 12px #a09d9d;
+      }
+
+      .list-button button:disabled {
+        background: rgb(241, 209, 149);
+        cursor: not-allowed;
+      }
+
+
+    </style>
+</head>
+  <body>
+    <div class="box">
+      <div class="circle">
+        <span class="line"></span>
+      </div>
+      <div class="list-button">
+        <button id="play" type="button">Play</button>
+        <button id="pause" type="button" disabled>Pause</button>
+        <button id="reverse" type="button" disabled>Reverse</button>
+        <button id="restart" type="button" disabled>Restart</button>
+      </div>
+    </div>
+
+    
+        <!--
+          Создайте счетчик секунд, который начинает отчет с 1 и заканчивается на 30,
+          также добавьте кнопки который останавливают отчет, и запускают его заново и добавьте кнопку обнуляющую отчет.
+          Также попробуйте изменить код так чтобы отчет начиналься с 30 и заканчивалься на 1.
+
+        + бонус: Сделать так что бы на каждый тик (1с/2c) менялся цвет фона. Можно на основе генератора случайного цвета с предудущих уроков.
+        + бонус: Сделать визуализацию стрелки которая идет по кругу
+              document.getElementById("myDIV").style.transform = "rotate(7deg)";
+
+        + бонус: Сделать кнопки которые выбирают режим в котором идет отсчет - обычный от 0 до 30 или реверсивный от 30 до 0
+        -->
+
+      <script>
+        const buttonPlay = document.getElementById('play');
+        const buttonPause = document.getElementById('pause');
+        const buttonReverse = document.getElementById('reverse');
+        const buttonRestart = document.getElementById('restart');
+        const circle = document.querySelector('.circle');
+        const lineCircle = circle.querySelector('.line');
+        const backgroundColors = ['red', 'green', 'grey', 'purple', 'orange', 'orangered', 'blue', 'powderblue'];
+        let interval = null;
+        let counerTimer = 0;
+        let statusReverse = true;
+
+        const getRandomNumber = (min, max) => Math.floor(Math.random()* (max - min +1) + min);
+        const getRandomColor = () => backgroundColors[getRandomNumber(0, backgroundColors.length - 1)];
+        const removeAttributes = elements => elements.forEach(element => element.removeAttribute('disabled'));
+        const disableButtons = buttons => buttons.forEach(button => button.setAttribute('disabled', true));
+
+        const play = () => {
+          removeAttributes([buttonPause, buttonRestart]);
+          disableButtons([buttonPlay, buttonReverse]);
+          interval = setInterval( () => {
+            circle.style.backgroundColor = getRandomColor();
+            if (statusReverse){
+              counerTimer++;
+            } else {
+              counerTimer--;
+            }
+            lineCircle.style.transform = `rotate(${6.18 * counerTimer}deg)`;
+            if (counerTimer >= 30 || counerTimer <= 0) {
+                clearInterval(interval);
+                buttonPause.setAttribute('disabled', true);
+                buttonReverse.removeAttribute('disabled');
+            }
+          }, 1000)
+        }
+
+        const pause = () => {
+          removeAttributes([buttonReverse, buttonPlay]);
+          buttonPause.setAttribute('disabled', true);
+          clearInterval(interval);
+        }
+        
+        const reverse = () => {
+          if ((statusReverse && counerTimer >= 30) || (!statusReverse && counerTimer <= 0)) {
+            buttonReverse.setAttribute('disabled', true);
+          } 
+          statusReverse = !statusReverse;
+          buttonReverse.innerText = statusReverse ? 'Reverse' : 'Normal';
+          buttonPlay.removeAttribute('disabled');
+        }
+
+        const restart = () => {
+          buttonReverse.innerText = 'Reverse';
+          statusReverse = true;
+          clearInterval(interval);
+          counerTimer = 0;
+          buttonPlay.removeAttribute('disabled');
+          disableButtons([buttonPause, buttonReverse, buttonRestart]);
+          circle.style.backgroundColor = 'transparent';
+          lineCircle.style.transform = `rotate(0deg)`;
+        }
+
+        buttonPlay.addEventListener('click', play);
+        buttonPause.addEventListener('click', pause);
+        buttonReverse.addEventListener('click', reverse);
+        buttonRestart.addEventListener('click', restart);
+
+      </script>
+  </body>
+</html>

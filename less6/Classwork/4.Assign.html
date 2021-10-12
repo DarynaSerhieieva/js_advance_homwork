@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork</title>
+
+    <script>
+    /*
+      Задание:
+        1. Используя интерфейс который есть на страничке, написать визуальный
+        конструктор обектов используя значение key-value, которые вводятся в
+        соответствующие поля в форме.
+
+        2. Каждый созданый обьект выводить в тег code после добавления каждого
+        нового поля. Т.е мы должны визуально видить в каком состоянии наши обьекты
+        сейчас
+
+        3. По нажатию кнопки Combine Objects! два обьекта должны обьедениться
+        используя метод Object.assing или spread operator и вывестись на стринчку.
+
+        * Изменять HTML можно.
+
+    */
+    </script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="assigned">
+      <form class="ObjForm">
+          <input name="key" placeholder="Enter your key"/>
+          <input name="value" placeholder="Enter your value"/>
+          <button type="submit">Send</button>
+      </form>
+      <div class="createResult">
+        <header>
+          Created Object
+        </header>
+      <div class="createdObj"></div>
+    </div>
+  </div>
+
+  <div class="assigned">
+    <form class="ObjForm">
+      <input name="key" placeholder="Enter your key"/>
+      <input name="value" placeholder="Enter your value"/>
+      <button type="submit">Send</button>
+    </form>
+    <div class="createResult">
+      <header>
+        Created Object
+      </header>
+      <div class="createdObj"></div>
+    </div>
+  </div>
+  </div>
+    <div class="resultBlock">
+      <button id="buttonResult">Combine Objects!</button>
+      <h3> Result: </h3>
+    <div id="result"></div>
+  </div>
+
+  <style>
+    .wrap{
+      width: 800px;
+      display: flex;
+      flex-direction: column;
+    }
+    .ObjForm,
+    .resultBlock{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      box-sizing: border-box;
+      padding: 10px 20px;
+    }
+
+    .assigned{
+      width: 300px;
+      display: flex;
+    }
+    .createResult header{
+      font-weight: 700;
+    }
+  </style>
+  <script>
+    
+    function ConstructorObject (key, value) {
+      this[key] = value;
+    }
+
+    let allObject = {};
+    
+    document.querySelectorAll('button[type="submit"]').forEach(button => {
+      button.addEventListener('click', event => {
+        event.preventDefault();
+        const parentButton = button.closest('.ObjForm');
+        const parentForm = parentButton.closest('.assigned');
+        const divNewObject = parentForm.querySelector('.createdObj') ;
+        
+        if (parentButton.key.value !== '' && parentButton.value.value !== '') {
+          const newObject = new ConstructorObject(parentButton.key.value, parentButton.value.value)
+          divNewObject.innerHTML = `<code>${JSON.stringify(newObject)}</code>`;
+          allObject = Object.assign(newObject, allObject);
+        }
+        parentButton.key.value = '';
+        parentButton.value.value = '';
+      })
+    })
+
+    const assingtTwoObject = () => {
+      document.querySelectorAll('code').forEach(element => element.remove());
+      document.getElementById('result').innerHTML = `
+        <code>${JSON.stringify(allObject)}</code>
+      `
+    }
+
+    document.getElementById('buttonResult').addEventListener('click', assingtTwoObject);
+
+  </script>
+</body>
+</html>
