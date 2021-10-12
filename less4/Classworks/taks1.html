@@ -50,7 +50,38 @@
     }
   
   </style>
-  <script> 
+  <script>
+    const mainForm = document.getElementById('MyValidateForm');
+    const checkboxTrue = document.getElementById('agree');
+    const button = document.getElementById('submit');
+    const inputList = [mainForm.login, mainForm.pas1, mainForm.pas2];
+
+    const checkLi = () => {
+      if (checkboxTrue.checked) {
+        button.removeAttribute('disabled');
+      }
+    }
+
+    checkboxTrue.addEventListener('click', checkLi);
+
+    const clickButton = (event) => {
+      event.preventDefault();
+      inputList.forEach(input => {
+        if (input.value === ''){
+          input.className = 'error';
+        } else {
+          input.className = 'ok';
+        }
+      })
+      if (mainForm.pas1.value !== mainForm.pas2.value || mainForm.pas1.value === '') {
+        mainForm.pas1.className = 'error';
+        mainForm.pas2.className = 'error';
+      } else {
+        mainForm.pas1.className = 'ok';
+        mainForm.pas2.className = 'ok';
+      }
+    }
+    button.addEventListener('click', clickButton);
   </script>
 </body>
 </html>

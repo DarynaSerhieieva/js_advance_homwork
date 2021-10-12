@@ -23,18 +23,90 @@
 
         + бонус добавить красивые картинки с погодой
     */
-    window.addEventListener("load", function () {
-      var countries = ['Ukraine', 'Poland', 'USA'];
-      var ukraineCity = ['Kyiv', 'Lviv', 'Odesa', 'Charkiv'];
-      var polandCity = ['Warszawa', 'Poznan', 'Krakow', 'Katowice'];
-      var usaCity = ['New York', 'Los Angeles', 'Las Vegas', 'Chicago'];
-    });
+    // window.addEventListener("load", function () {
+    //   var countries = ['Ukraine', 'Poland', 'USA'];
+    //   var ukraineCity = ['Kyiv', 'Lviv', 'Odesa', 'Charkiv'];
+    //   var polandCity = ['Warszawa', 'Poznan', 'Krakow', 'Katowice'];
+    //   var usaCity = ['New York', 'Los Angeles', 'Las Vegas', 'Chicago'];
+    // });
   </script>
+  <style>
+    body {
+      display: flex;
+    }
+    #countries {
+      margin-right: 50px;
+    }
+    #result {
+      position: fixed;
+      top: 25%;
+      left: 25%;
+    }
+
+  </style>
 </head>
 <body>
   <select id="countries"></select>
   <div id="result"></div>
   <script>
+    const selects = document.getElementById('countries');
+    const result = document.getElementById('result');
+    const weatherWinter = ['Солнечно', 'Легкий снегопад', 'Сильный снегопад'];
+    const weatherAutumn = ['Солнечно', 'Дождь', 'Ветер', 'Сильный дождь'];
+    const weatherSummer = ['Солнечно', 'Засуха', 'Ветер'];
+    let weather = '';
+    const countriesCity = {
+      Ukraine: {
+        city: ['Kyiv', 'Lviv', 'Odesa', 'Charkiv']
+      },
+      Poland: {
+        city: ['Warszawa', 'Poznan', 'Krakow', 'Katowice']
+      },
+      USA: {
+        city: ['New York', 'Los Angeles', 'Las Vegas', 'Chicago']
+      }
+    }
+    const random = (min, max) => {
+      return Math.floor(Math.random()* (max - min + 1) + min);
+    }
+
+    window.addEventListener("load", () => {
+      Object.keys(countriesCity).forEach(keys => {
+        const options = document.createElement('option');
+        options.innerText = keys;
+        selects.appendChild(options);
+      })
+      const addSelect= (event) => {
+        result.innerText = '';
+        const removeSelest = document.querySelector('.city');
+        if (removeSelest) {
+          removeSelest.remove();
+        }
+        const newSelect = document.createElement('select');
+        newSelect.className = 'city';
+        document.body.appendChild(newSelect);
+        const myChoise = event.target.value;
+        countriesCity[myChoise].city.forEach(city => {
+          const cityOptions = document.createElement('option');
+          cityOptions.innerText = city;
+          newSelect.appendChild(cityOptions);
+        })
+        const myChoiseCity = (event) => {
+          const randomTem = random(-10, 40);
+          if (randomTem < 0) {
+            weather =  weatherWinter[random(0, weatherWinter.length -1)];
+          } else if (randomTem < 30) {
+            weather = weatherAutumn[random(0, weatherAutumn.length -1)];
+          } else {
+            weather = weatherSummer[random(0, weatherSummer.length -1)];
+          }
+          result.innerText = `${myChoise}. В ${event.target.value} ${weather} ${randomTem} градусов`
+        }
+        newSelect.addEventListener('change', myChoiseCity)
+      }
+      selects.addEventListener('change', addSelect);
+    })
+
   </script>
 </body>
 </html>

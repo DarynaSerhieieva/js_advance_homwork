@@ -44,3 +44,41 @@
             - yourForm.reportValidity: вызывает проверку всех правил и вывод сообщения с ошибкой, если такая есть
 
     */
+    const myForm = document.getElementById('myForm');
+    const inputs = myForm.querySelectorAll('input');
+    const buttonSend = document.querySelector('.send');
+    const buttonVerify = document.querySelector('.verify');
+
+    myForm.name.setCustomValidity('Как тебя зовут дружище?!');
+    myForm.email.setCustomValidity('Ну и зря, не получишь бандероль с яблоками!');
+    myForm.password.setCustomValidity('Я никому не скажу наш секрет');
+    myForm.apple.setCustomValidity('Ну хоть покушай немного... Яблочки вкусные');
+    myForm.thanks.setCustomValidity('Фу, неблагодарный(-ая)');
+    myForm.agree.setCustomValidity('Необразованные живут дольше! Хорошо подумай!');
+
+    const checkValidity = event => {
+        myForm.classList.add('submitted');
+
+        if (!myForm.checkValidity()) {
+            myForm.reportValidity();
+            buttonSend.setAttribute('disabled', true);
+        } else {
+            buttonSend.removeAttribute('disabled');
+        }
+
+        event.preventDefault();
+    }
+
+    buttonVerify.addEventListener('click', checkValidity);
+
+    inputs.forEach(input => {
+        input.addEventListener('input', () => {
+            if (input.name === "thanks" && input.value !== 'спасибо') {
+                input.setCustomValidity('Фу, неблагодарный(-ая)');
+            } else {
+                input.setCustomValidity('');
+            }
+        })
+    })
+
+    
