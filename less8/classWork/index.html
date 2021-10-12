@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        max-width: 1400px;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .form {
+        margin-bottom: 50px;
+    }
+    .form button {
+        cursor: pointer;
+        padding: 4px 8px;
+        background: orange;
+        border: none;
+        border-radius: 4px;
+    }
+    .form button:hover {
+        box-shadow: 0 0 4px rgb(151, 151, 151);
+    }
+
+</style>
+<body>
+    <div class="box">
+        <form id="form1" class="form">
+            <input name="name">
+            <input name="age">
+            <input name="password">
+            <button id="convert">convert</button>
+        </form>
+        <form id="form2" class="form">
+            <input>
+            <button id="parse">parse</button>
+        </form>
+      </div>
+    <script src="1_json.js"></script>
+    <!-- <script src="2_fetch.js"></script> -->
+    <!-- <script src="3_async.js"></script> -->
+</body>
+</html>
