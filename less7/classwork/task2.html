@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance</title>
+</head>
+<body>
+    <!-- 
+         Реализовать наследование по примеру приведенном на картинку inheritance
+         
+         class Man должен иметь поля
+            name            
+            age
+            country
+        + методы с картинки
+        
+        Каждый метод должен выводить в консоле все поля + имя метода
+        WALK:
+            console.log(`Hi! My name is ${name}, and Im {age} years old. Im from ${country}, and I like to WALK a lot`)
+        
+
+
+
+     -->
+   <script>
+      class Man {
+         constructor(name, age, country) {
+            this.name = name;
+            this.age = age;
+            this.country = country;
+         }
+
+         walk() {
+            return console.log(`Hi! My name is ${this.name}, and I'm ${this.age} years old. Im from ${this.country}, and I like to walk a lot`);
+         }
+
+         eat() {
+            return console.log(`Hi! My name is ${this.name}, and I'm ${this.age} years old. Im from ${this.country}, and I like to eat a lot`)
+         }
+
+         drink() {
+            return console.log(`Hi! My name is ${this.name}, and I'm ${this.age} years old. Im from ${this.country}, and I like to drinke a lot`);
+         }
+      }
+
+      class Doctor extends Man {
+         cure() {
+            return console.log(`Hi!My name is ${this.name}, and I'm from ${this.country}, and I cure people.`);
+         }
+      }
+
+      class Soldier extends Man {
+         shoot() {
+            return console.log(`Hi!My name is ${this.name}, and I'm from ${this.country}, and I shoot targets.`);
+         }
+      }
+      
+      const soldier = new Soldier('Andrew Lincoln', 48, 'United Kingdom');
+      const doctor = new Doctor('Norman Reedus', 52, 'USA');
+   </script>
+</body>
+</html>
