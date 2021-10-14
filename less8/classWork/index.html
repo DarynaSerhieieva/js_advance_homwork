@@ -27,6 +27,18 @@
     .form button:hover {
         box-shadow: 0 0 4px rgb(151, 151, 151);
     }
+    table {
+        border-collapse: collapse;
+    }
+    tbody th,
+    tbody td {
+        padding: 10px;
+        text-align: start;
+        border: 2px solid black;
+    }
+    td > span {
+        display: none;
+    }
 
 </style>
 <body>
@@ -38,12 +50,17 @@
             <button id="convert">convert</button>
         </form>
         <form id="form2" class="form">
-            <input>
+            <input name="parse">
             <button id="parse">parse</button>
         </form>
+        <table>
+            <tbody id="addTable"></tbody>
+        </table>
       </div>
-    <script src="1_json.js"></script>
+      
+
+    <!-- <script src="1_json.js"></script> -->
     <!-- <script src="2_fetch.js"></script> -->
-    <!-- <script src="3_async.js"></script> -->
+    <script src="3_async.js"></script>
 </body>
 </html>

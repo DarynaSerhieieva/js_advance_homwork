@@ -50,3 +50,25 @@
   //       .then()
   //   })
   //   .then( func)
+
+  const randomNumber = (min, max) => Math.floor(Math.random()* (max - min -1) + min);
+
+  class User {
+    constructor(name, post) {
+      this.name = name;
+      this.post = post;
+    }
+  }
+
+  fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then(res => res[randomNumber(0, res.length - 1)])
+    .then(users => {
+      fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(res => res.json())
+        .then(res => res.filter(post => post.userId === users.id))
+        .then(post => {
+          const user = new User(users.name, post)
+          console.log(user)
+        })
+    })

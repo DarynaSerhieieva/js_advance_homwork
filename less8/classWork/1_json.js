@@ -22,10 +22,8 @@
 
 */
 
-const form1 = document.getElementById('form1');
 const form2 = document.getElementById('form2');
-const convert = document.getElementById('convert');
-let result = {};
+let convertObject = {};
 
 class ConstructorObjct {
   constructor(key, value) {
@@ -35,14 +33,20 @@ class ConstructorObjct {
 
 const convertForm1 = event => {
   event.preventDefault();
-  form1.querySelectorAll('input').forEach(input => {
+  convertObject = {};
+  document.getElementById('form1').querySelectorAll('input').forEach(input => {
     let newObject = new ConstructorObjct(input.name, input.value);
-    result = Object.assign(newObject, result);
+    convertObject = Object.assign(newObject, convertObject);
+    input.value = '';
   })
-  console.log(JSON.stringify(result));
+  console.log(JSON.stringify(convertObject));
 }
-const parseForm2 = () => {
 
+const parseForm2 = event => {
+  event.preventDefault();
+  const inputPars = form2.querySelector('input');
+  console.log(JSON.parse(`{"${inputPars.name}": "${inputPars.value}"}`));
+  inputPars.value = '';
 }
 
 document.getElementById('convert').addEventListener('click', convertForm1);
