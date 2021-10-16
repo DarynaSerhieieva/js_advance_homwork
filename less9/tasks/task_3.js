@@ -49,7 +49,8 @@ class Post {
         newPost.appendChild(postList);
         postList.innerHTML = `
             <h2>${this.title}</h2>
-            <span>${this.id}</span>
+            <span><b>ID:</b> ${this.id}</span>
+            <span><b>Likes:</b> ${this.likes}</span>
             <p>${this.body}</p>
         `;
     }
@@ -68,6 +69,7 @@ async function getUsersPost(){
 
 window.addEventListener('load', () => {
     const getItemlocal = JSON.parse(localStorage.getItem('posts'));
+
     if (getItemlocal) {
         getPost(getItemlocal);
     } else {
@@ -87,8 +89,8 @@ const addNewPost = event => {
     } else {
         alert('inputs should not be empty');
     }
+
     form.reset();
 }
 
 form.querySelector('button').addEventListener('click', addNewPost);
-
