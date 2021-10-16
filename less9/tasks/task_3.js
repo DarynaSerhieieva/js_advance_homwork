@@ -24,14 +24,19 @@
     - После перезагрузки страницы, данные должны сохраниться.
     - Можно было предзагрузить данные в класс из апи: https://jsonplaceholder.typicode.com/posts
 
-*/let firstPost = new postMessage()
+*/
+// let firstPost = new postMessage()
+
+let allPost = [];
 
 class Post {
-    constructor(id, titel, body) {
+    constructor(id, title, body) {
         this.id = id;
-        this.titel = titel;
+        this.title = title;
         this.body = body;
         this.likes = 0;
+
+        allPost.push(this);
     }
 
     addLike() {
@@ -39,12 +44,51 @@ class Post {
     }
 
     render() {
-        console.log('render');
+        const newPost = document.getElementById('addNewPost');
+        const postList = document.createElement('div');
+        newPost.appendChild(postList);
+        postList.innerHTML = `
+            <h2>${this.title}</h2>
+            <span>${this.id}</span>
+            <p>${this.body}</p>
+        `;
     }
 }
 
-const addNewPostFromDocument = () => {
-    const div = document.createElement('div');
-    // const 
-    document.body.appendChild(div);
+const getPost = posts => posts.forEach(post => new Post(post.id, post.title, post.body));
+
+async function getUsersPost(){
+    const listUsersPost = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const parsUsersPost = await listUsersPost.json();
+
+    getPost(parsUsersPost);
+
+    localStorage.setItem('posts', JSON.stringify(allPost));
 }
+
+window.addEventListener('load', () => {
+    const getItemlocal = JSON.parse(localStorage.getItem('posts'));
+    if (getItemlocal) {
+        getPost(getItemlocal);
+    } else {
+        getUsersPost();
+    }
+});
+
+const form = document.getElementById('formTask3');
+
+const addNewPost = event => {
+    event.preventDefault();
+
+    if (form.title.value !== '' && form.about.value !== '') {
+        new Post(allPost.length + 1, form.title.value, form.about.value);
+        localStorage.setItem('posts', JSON.stringify(allPost));
+        console.log('post add');
+    } else {
+        alert('inputs should not be empty');
+    }
+    form.reset();
+}
+
+form.querySelector('button').addEventListener('click', addNewPost);
+
