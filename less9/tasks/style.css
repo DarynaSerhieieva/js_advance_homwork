@@ -45,3 +45,28 @@
 .hide {
     display: none;
 }
+
+.done{
+    text-decoration: line-through;
+  }
+.textInput{
+box-sizing: border-box;
+padding: 10px 20px;
+}
+.addButton{
+box-sizing: border-box;
+padding: 10px 20px;
+background: #ffcc00;
+}
+
+.DoneCheckbox,
+.TodoText{
+margin-right: 5px;
+}
+
+button{
+cursor: pointer;
+background: red;
+color: #fff;
+padding: 5px 10px;
+}

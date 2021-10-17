@@ -1,0 +1,26 @@
+{
+  "list": [
+    {
+      "name": "dasha",
+      "id": 1
+    },
+    {
+      "name": "olek",
+      "id": 4
+    },
+    {
+      "name": "dashulik",
+      "id": 5
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
