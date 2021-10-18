@@ -53,30 +53,10 @@
 
     <script>
         const ulItem = document.getElementById('toDoList');
-        const addNew = document.getElementById('AddToDo');
         const textToDo = document.getElementById('newToDo');
         let list = [];
         let allButton = [];
 
-        // const AddList = value => {
-        // const newList = document.createElement('li');
-        // const newInput = document.createElement('input');
-        // const newSpan = document.createElement('span');
-        // const newButton = document.createElement('button');
-        // newList.className = 'listItem';
-        // newInput.className = 'DoneCheckbox';
-        // newSpan.className = 'TodoText';
-        // newInput.type = 'checkbox';
-        // newButton.innerText = 'Remove';
-        // newSpan.innerText = value;
-        // newButton.addEventListener('click', (event) => {
-        //     event.target.closest('li').remove()
-        // });
-        // ulItem.appendChild(newList);
-        // newList.appendChild(newInput);
-        // newList.appendChild(newSpan);
-        // newList.appendChild(newButton);
-        // }
         const render = value => {
             return `
                 <li class="listItem">
@@ -97,17 +77,19 @@
         const addToDo = () => {
             const textValue = textToDo.value;
             textToDo.value = '';
+
             if (textValue === '' || list.includes(textValue)) {
                 return false;
             }
             ulItem.innerHTML = '';
             list.push(textValue);
             ulItem.innerHTML = list.map(value => render(value)).join('');
+
             allButton = document.querySelectorAll('.listItem button');
             allButton.forEach(button => button.addEventListener('click', remove));
         }
         
-        addNew.addEventListener('click', addToDo);
+        document.getElementById('AddToDo').addEventListener('click', addToDo);
 
     </script>
 

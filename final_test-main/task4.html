@@ -79,7 +79,7 @@
         async function getUsers() {
             const getListUsers = await fetch('https://jsonplaceholder.typicode.com/users');
             const users = await getListUsers.json();
-            users.forEach(element => addTable(element))
+            users.forEach(element => addTable(element));
 
             document.getElementById('addTable').innerHTML = usersHtml;
 
