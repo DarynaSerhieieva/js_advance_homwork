@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+}
+.box {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: orange;
+    font-size: 20px;
+}
+#formUser input {
+    margin-top: 20px;
+    padding: 6px 8px;
+}
+#formUser button {
+    cursor: pointer;
+    margin-top: 20px;
+    padding: 6px 8px;
+    background: orange;
+    border: none;
+    border-radius: 8px;
+}
+.box__back {
+    margin-top: 50px;
+    width: 200px;
+    height: 200px;
+    border-radius: 12px;
+}
+.box__button {
+    margin-top: 50px;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: rgb(122, 187, 184);
+    font-size: 15px;
+}
+.box__button:hover {
+    box-shadow: 0 0 10px rgb(103, 158, 155);
+}
+#signOut {
+    margin-top: 20px;
+}
+.hide {
+    display: none;
+}
+
+.done{
+    text-decoration: line-through;
+  }
+.textInput{
+box-sizing: border-box;
+padding: 10px 20px;
+}
+.addButton{
+box-sizing: border-box;
+padding: 10px 20px;
+background: #ffcc00;
+}
+
+.DoneCheckbox,
+.TodoText{
+margin-right: 5px;
+}
+
+button{
+cursor: pointer;
+background: red;
+color: #fff;
+padding: 5px 10px;
+}
