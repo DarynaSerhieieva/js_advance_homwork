@@ -85,7 +85,6 @@ const addNewPost = event => {
     if (form.title.value !== '' && form.about.value !== '') {
         new Post(allPost.length + 1, form.title.value, form.about.value);
         localStorage.setItem('posts', JSON.stringify(allPost));
-        console.log('post add');
     } else {
         alert('inputs should not be empty');
     }
